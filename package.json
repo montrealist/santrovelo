@@ -1,0 +1,26 @@
+{
+  "name": "Santrovelo",
+  "title": "Santopol Bike Maintenance DB",
+  "description": "A database to support bike membership information for Santropol Roulant",
+  "version": "1.0.0",
+  "homepage": "",
+  "main": "./server/server",
+  "author": {
+    "name": "Tristan Barry",
+    "email": "tristan@thebarry.net",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+}

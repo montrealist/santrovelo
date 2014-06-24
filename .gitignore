@@ -1,0 +1,4 @@
+/server/
+/node_modules/
+/public/js/libs/
+/public/js/app/config/ParseInit.js
