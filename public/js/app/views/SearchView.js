@@ -1,6 +1,6 @@
-define( [ 'App', 'marionette', 'bootstrap-sortable', 'views/MemberInfoCollectionView','collections/MemberInfoCollection',
+define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/MemberInfoCollection',
          'handlebars', 'text!templates/search.html'],
-    function( App, Marionette, BootstrapSortable, MemberInfoCollectionView,MemberInfoCollection,
+    function( App, Marionette, MemberInfoCollectionView,MemberInfoCollection,
             Handlebars, template) {
         
         var SearchView = Marionette.ItemView.extend( {
@@ -41,6 +41,7 @@ define( [ 'App', 'marionette', 'bootstrap-sortable', 'views/MemberInfoCollection
                     });
                 
                 this.searchResultsView.render();
+                
             },
             
             
@@ -58,8 +59,6 @@ define( [ 'App', 'marionette', 'bootstrap-sortable', 'views/MemberInfoCollection
                 var searchResults = App.memberInfo.filter(this._compareMemberInfoToSearchResults);
                 
                 this.filteredMemberInfo.reset(searchResults);
-                
-                $.bootstrapSortable(true);
                 
             },
             

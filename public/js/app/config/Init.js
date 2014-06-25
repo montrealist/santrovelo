@@ -10,16 +10,9 @@ require.config({
         "backbone":"../libs/backbone/backbone",
         "marionette":"../libs/marionette/lib/backbone.marionette.min",
         "handlebars":"../libs/handlebars/handlebars.min",
-        "bootstrap-sortable" : "../libs/bootstrap-sortable/Scripts/bootstrap-sortable",
-        "moment": "../libs/moment/min/moment.min",
         "bootstrap": "../libs/bootstrap/dist/js/bootstrap.min",
-
-        // Plugins
-        "backbone.validateAll":"../libs/plugins/Backbone.validateAll",
-        
         "text":"../libs/plugins/text",
-        
-        // Parse
+        "jquery-validation" : "../libs/jquery.validation/dist/jquery.validate",
         "parse": "http://www.parsecdn.com/js/parse-1.2.16.min"
 
     },
@@ -27,14 +20,15 @@ require.config({
     shim:{
         "bootstrap":["jquery"],
         "jqueryui":["jquery"],
+        "jquery-validation":{
+            "deps": ["jquery"]
+        },
         "backbone":{
             "deps":["underscore"],
-            // Exports the global window.Backbone object
             "exports":"Backbone"
         },
         "marionette":{
             "deps":["underscore", "backbone", "jquery"],
-            // Exports the global window.Marionette object
             "exports":"Marionette"
         },
         "handlebars":{
@@ -44,16 +38,14 @@ require.config({
             deps: ['jquery', 'underscore'],
             exports: 'Parse'
         },
-        // Backbone.validateAll plugin (https://github.com/gfranko/Backbone.validateAll)
         "backbone.validateAll":["backbone"]
     }
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["App", "routers/AppRouter", "controllers/Controller", "config/ParseInit","jquery", "jqueryui",
-         "bootstrap", "backbone.validateAll"],
+require(["App", "routers/AppRouter", "controllers/Controller", "config/ParseInit",
+         "jquery", "jqueryui","bootstrap"],
     function (App, AppRouter, Controller, ParseInit) {
-        
         ParseInit.init();
         
         App.appRouter = new AppRouter({

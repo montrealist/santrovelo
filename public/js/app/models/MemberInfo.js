@@ -7,18 +7,19 @@ define (['parse', 'underscore'], function(Parse, _){
     //Using the parse object to create objects. But should be replaceablewith Backbone.
     
     var MemberInfo = Parse.Object.extend("MemberInfo",{
-        initialize : function(options){
+        defaults: {
+            'fullname' : '',
+            'phone': '',
+            'email' : '',
+            'fee' : 0,
+            'signoff': false            
         },
         
         /*
          * Getter for fullname
          */
         getFullName : function(){
-            if (_.isUndefined(this.get('fullname'))){
-                this.set('fullname', "");
-            }
             return this.get('fullname');
-            
         },
         
         /*
@@ -26,7 +27,7 @@ define (['parse', 'underscore'], function(Parse, _){
          */
         setFullName : function(name){
             if(_.isString(name)){
-                this.set(fullname, name);
+                this.set('fullname', name);
             }else{
                 throw "name needs to be oftype string";   
             }
@@ -36,27 +37,21 @@ define (['parse', 'underscore'], function(Parse, _){
          * Getter for phone number. Using Strings
          */
         getPhoneNumber : function(){
-            if (_.isUndefined(this.phone)) {
-                this.phone = "";
-            }
-            return this.phone;
+            return this.get('phone');
         },
         
         /*
          * setter - no error checking if it is string, number, etc
          */ 
         setPhoneNumber : function(number){
-            this.phone = number;
+            this.set('phone', number);
         },
         
         /*
          * Email address getter
          */
         getEmail : function(){
-            if (_.isUndefined(this.email)) {
-                this.email = "";
-            }
-            return this.email;
+            return this.get('email');
         },
         
         /*
@@ -64,7 +59,7 @@ define (['parse', 'underscore'], function(Parse, _){
          */
         setEmail : function(email){
             if (_.isString(email)) {
-                this.email = email;
+                this.set('email', email);
             }else{
                 throw "email must be a string";
             }
@@ -74,7 +69,7 @@ define (['parse', 'underscore'], function(Parse, _){
          * Getter for fee paid
          */
         getFeePaid : function(){
-            return feePaid;
+            return this.get('fee');
         },
         
         /*
@@ -82,7 +77,7 @@ define (['parse', 'underscore'], function(Parse, _){
          */
         setFeePaid : function(fee){
             if (_.isNumber(fee)) {
-                this.fee = fee;
+                this.set('fee',fee);
             }else{
                 throw "fee must be a number";
             }
@@ -92,9 +87,6 @@ define (['parse', 'underscore'], function(Parse, _){
          * returns true or false if user has signed off on terms of service
          */
         getSignOff : function(){
-            if (_.isUndefined(this.signoff)) {
-                this.signoff = false;
-            }
             return this.signoff;
         },
         
@@ -103,7 +95,7 @@ define (['parse', 'underscore'], function(Parse, _){
          */
         setSignOff : function(signoff){
             if (_.isBoolean(signoff)) {
-                this.signoff = signoff;
+                this.set('signoff', signoff);
             }else{
                 throw "signoff must be a boolean";
             }
