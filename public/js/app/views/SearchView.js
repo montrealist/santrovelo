@@ -14,6 +14,7 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
             events: {
                 'submit @ui.searchword' : 'onSearch',
                 'keyup @ui.searchword' : 'onSearch'
+                
             },
             
             initialize: function(){
@@ -45,6 +46,9 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
             },
             
             
+            /*
+             * Called to make a search based on text input
+             */
             onSearch : function(evt){
                 evt.preventDefault();
                 this.filterResults();                

@@ -12,8 +12,19 @@ define (['parse', 'underscore'], function(Parse, _){
             'phone': '',
             'email' : '',
             'fee' : 0,
-            'signoff': false            
+            'signoff': false
         },
+        
+        initialize : function(options){
+            options = options || {};
+            
+            if (!options.registrationDate) {
+                this.set('registrationDate', new Date().getTime());
+            }else{
+                this.set('registrationDate', options.registrationDate);
+            }
+        },
+        
         
         /*
          * Getter for fullname
@@ -21,6 +32,7 @@ define (['parse', 'underscore'], function(Parse, _){
         getFullName : function(){
             return this.get('fullname');
         },
+        
         
         /*
          * Name needs to be a string. Throws an exception if this fails
@@ -33,6 +45,7 @@ define (['parse', 'underscore'], function(Parse, _){
             }
         },
         
+        
         /*
          * Getter for phone number. Using Strings
          */
@@ -40,12 +53,14 @@ define (['parse', 'underscore'], function(Parse, _){
             return this.get('phone');
         },
         
+        
         /*
          * setter - no error checking if it is string, number, etc
          */ 
         setPhoneNumber : function(number){
             this.set('phone', number);
         },
+        
         
         /*
          * Email address getter
@@ -72,6 +87,7 @@ define (['parse', 'underscore'], function(Parse, _){
             return this.get('fee');
         },
         
+        
         /*
          * Setter for fee paid - will throw an error if it is not a number.
          */
@@ -83,12 +99,14 @@ define (['parse', 'underscore'], function(Parse, _){
             }
         },
         
+        
         /*
          * returns true or false if user has signed off on terms of service
          */
         getSignOff : function(){
             return this.signoff;
         },
+        
         
         /*
          * Sets if the users has signed off - must be a boolean
@@ -99,6 +117,32 @@ define (['parse', 'underscore'], function(Parse, _){
             }else{
                 throw "signoff must be a boolean";
             }
+        },
+        
+        
+        /*
+         * Returns the time in UTC that the user registered most recently.
+         */ 
+        getRegistrationDate : function(){
+            return this.get('registrationDate');
+        },
+        
+        
+        /*
+         * Sets the registration date for this user.
+         * Needs to be in UTC time - milliseconds from the epoch.
+         * Easiest method is: new Date().getTime()
+         *
+         * If parameter is undefined; defaults to now
+         */
+        setRegistrationDate: function(time){
+            if (_.isUndefined(time)) {
+                time = new Date().getTime();
+            }
+            if (!_.isNumber(time)) {
+                throw "A number needs to be passed to setRegistrationDate";
+            }            
+            this.set('registrationDate', time);
         }
     });
     

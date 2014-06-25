@@ -1,7 +1,8 @@
 define(['App', 'backbone', 'marionette', 'parse', 'models/MemberInfo',
-        'views/SearchView', 'views/LoginView', 'views/AddNewMemberView'],
+        'views/SearchView', 'views/LoginView', 'views/AddNewMemberView',
+        'views/EditMemberView'],
     function (App, Backbone, Marionette, Parse, MemberInfo,
-              SearchView, LoginView, AddNewMemberView) {
+              SearchView, LoginView, AddNewMemberView, EditMemberView) {
     
     controller =  Backbone.Marionette.Controller.extend({        
         start:function () {
@@ -12,8 +13,13 @@ define(['App', 'backbone', 'marionette', 'parse', 'models/MemberInfo',
             App.mainRegion.show(new LoginView());
         },
         
-        newmember : function(){
+        newMember : function(){
             App.mainRegion.show(new AddNewMemberView());
+        },
+        
+        editMember : function(id){
+            var member = App.memberInfo.get(id);
+            App.mainRegion.show(new EditMemberView({model:member}));
         }
     });
     
