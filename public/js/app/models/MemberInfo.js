@@ -14,25 +14,7 @@ define (['parse', 'underscore', 'moment'], function(Parse, _, moment){
             'fee' : 0,
             'signoff': false
         },
-        
-        initialize : function(options){
-            options = options || {};
-            
-            if (!options.registeredUntilDate) {
-                //set default registation date 12 months ahead
-                this.set('registeredUntilDate', moment().add('months',12).valueOf() );
-            }else{
-                this.set('registeredUntilDate', options.registeredUntil);
-            }
-            
-            if (!options.membershipStartDate) {
-                //set default member day to now
-                this.set('membershipStartDate', moment().valueOf());
-            }else{
-                this.set('membershipStartDate', options.membershipStartDate);
-            }
-        },
-        
+                
         
         /*
          * Getter for fullname
