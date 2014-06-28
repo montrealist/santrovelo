@@ -1,6 +1,16 @@
+<td align="center">{{#isDateBeforeToday registeredUntilDate}}
+    <span class="glyphicon glyphicon-remove"></span>
+{{else}}
+    <span class="glyphicon glyphicon-ok"></span>
+{{/isDateBeforeToday}}
+</td>
+
 <td>{{fullname}}</td>
 <td>{{email}}</td>
 <td>{{phone}}</td>
+<td>{{formatDate membershipStartDate}}
+</td>
+<td>{{formatDate registeredUntilDate}}</td>
 <td>
     <a href="#edit/{{objectId}}">Edit</a>
 </td>

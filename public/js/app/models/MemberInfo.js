@@ -3,7 +3,7 @@
  */
 
 
-define (['parse', 'underscore'], function(Parse, _){
+define (['parse', 'underscore', 'moment'], function(Parse, _, moment){
     //Using the parse object to create objects. But should be replaceablewith Backbone.
     
     var MemberInfo = Parse.Object.extend("MemberInfo",{
@@ -18,10 +18,18 @@ define (['parse', 'underscore'], function(Parse, _){
         initialize : function(options){
             options = options || {};
             
-            if (!options.registrationDate) {
-                this.set('registrationDate', new Date().getTime());
+            if (!options.registeredUntilDate) {
+                //set default registation date 12 months ahead
+                this.set('registeredUntilDate', moment().add('months',12).valueOf() );
             }else{
-                this.set('registrationDate', options.registrationDate);
+                this.set('registeredUntilDate', options.registeredUntil);
+            }
+            
+            if (!options.membershipStartDate) {
+                //set default member day to now
+                this.set('membershipStartDate', moment().valueOf());
+            }else{
+                this.set('membershipStartDate', options.membershipStartDate);
             }
         },
         
@@ -123,8 +131,8 @@ define (['parse', 'underscore'], function(Parse, _){
         /*
          * Returns the time in UTC that the user registered most recently.
          */ 
-        getRegistrationDate : function(){
-            return this.get('registrationDate');
+        getRegisteredUntilDate : function(){
+            return this.get('registeredUntilDate');
         },
         
         
@@ -135,14 +143,21 @@ define (['parse', 'underscore'], function(Parse, _){
          *
          * If parameter is undefined; defaults to now
          */
-        setRegistrationDate: function(time){
+        setRegisteredUntilDate : function(time){
             if (_.isUndefined(time)) {
-                time = new Date().getTime();
+                time = moment().valueOf();
             }
             if (!_.isNumber(time)) {
                 throw "A number needs to be passed to setRegistrationDate";
             }            
-            this.set('registrationDate', time);
+            this.set('registeredUntilDate', time);
+        },
+        
+        /*
+         * Get membership start date
+         */
+        getMembershipStartDate : function(){
+            return this.get('membershipStartDate');            
         }
     });
     

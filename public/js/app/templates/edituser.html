@@ -4,27 +4,27 @@
     <form role="form">
         <div class="form-group">
             <label>Name</label>
-            <input class="form-control" id="name" placeholder="Name" value={{fullname}} required>
+            <input class="form-control" id="name" placeholder="Name" value="{{fullname}}" required>
         </div>
         
         <div class="form-group">
             <label>Email</label>
-            <input class="form-control" id="email" placeholder="Email" type="email">
+            <input class="form-control" id="email" placeholder="Email" value="{{email}}" type="email">
         </div>
         
         <div class="form-group">
             <label>Phone</label>
-            <input class="form-control" id="phone" placeholder="Phone" type="tel">
+            <input class="form-control" id="phone" placeholder="Phone" value="{{phone}}" type="tel">
         </div>
         
         <div class="form-group">
             <label>Fee Paid</label>
-            <input class="form-control" id="fee" placeholder="Fee paid ($)" type="number">
+            <input class="form-control" id="fee" placeholder="Fee paid ($)" value="{{fee}}" type="number">
         </div>
         
         <div class="form-group">
             <label>Signoff</label>
-            <input type="checkbox" id="signoff" placeholder="Sign Off">
+            <input type="checkbox" id="signoff" placeholder="Sign Off" {{#if signoff}}checked{{/if}}>
         </div>
         
           <button type="submit" class="btn btn-default">Submit</button>

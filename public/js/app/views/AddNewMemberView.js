@@ -36,8 +36,7 @@ define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/Member
                 this.model.setFullName(this.ui.name.val());
                 this.model.setPhoneNumber(this.ui.phone.val());
                 
-                App.memberInfo.create(this.model.toJSON());
-                
+                App.memberInfo.create(this.model, {wait: true});                
             }
         });
         

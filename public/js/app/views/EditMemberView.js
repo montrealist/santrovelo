@@ -4,9 +4,27 @@ define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/Member
         
         
         var EditMemberView = Marionette.ItemView.extend({
-            template : Handlebars.compile(template)
+            template : Handlebars.compile(template),
             
+            ui:{
+                'form' : 'form',
+                'signoff' : 'form #signoff',
+                'name' : 'form #name',
+                'phone' : 'form #phone',
+                'email' : 'form #email',
+                'fee' : 'form #fee'
+            },
+            
+            events: {
+                'submit @ui.form' : 'onSubmit'
+            },
+            
+            initialize: function(){
+                if (!this.model) {
+                    this.model = new MemberInfo();
+                }
+            }
         });
         
         return EditMemberView;
-       });
+    });

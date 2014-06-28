@@ -4,7 +4,7 @@ require.config({
     // probably a good idea to keep version numbers in the file names for updates checking
     paths:{
         // Core Libraries
-        "jquery":"../libs/jquery/dist/jquery.min",
+        "jquery":"../libs/jquery/jquery.min",
         "jqueryui":"../libs/jqueryui",
         "underscore":"../libs/lodash/dist/lodash.min",
         "backbone":"../libs/backbone/backbone",
@@ -13,7 +13,9 @@ require.config({
         "bootstrap": "../libs/bootstrap/dist/js/bootstrap.min",
         "text":"../libs/plugins/text",
         "jquery-validation" : "../libs/jquery.validation/dist/jquery.validate",
-        "parse": "http://www.parsecdn.com/js/parse-1.2.16.min"
+        "parse": "../libs/parse-1.2.16.min",
+        "moment" :"../libs/moment/moment",
+        "backgrid" : "../libs/backgrid/lib/backgrid"
 
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
@@ -22,6 +24,10 @@ require.config({
         "jqueryui":["jquery"],
         "jquery-validation":{
             "deps": ["jquery"]
+        },
+        "backgrid" :{
+            deps: ['jquery', 'backbone', 'underscore'],
+            exports: 'Backgrid'
         },
         "backbone":{
             "deps":["underscore"],
