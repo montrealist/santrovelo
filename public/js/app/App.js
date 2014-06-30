@@ -51,6 +51,6 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars',
             return options.inverse();
             
         });
-        
+
         return App;
     });

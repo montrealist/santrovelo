@@ -15,7 +15,8 @@ require.config({
         "jquery-validation" : "../libs/jquery.validation/dist/jquery.validate",
         "parse": "../libs/parse-1.2.16.min",
         "moment" :"../libs/moment/moment",
-        "backgrid" : "../libs/backgrid/lib/backgrid"
+        "backgrid" : "../libs/backgrid/lib/backgrid",
+        "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min"
 
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
@@ -26,8 +27,8 @@ require.config({
             "deps": ["jquery"]
         },
         "backgrid" :{
-            deps: ['jquery', 'backbone', 'underscore'],
-            exports: 'Backgrid'
+            deps: ["jquery", "backbone", "underscore"],
+            exports: "Backgrid"
         },
         "backbone":{
             "deps":["underscore"],
@@ -41,8 +42,8 @@ require.config({
             "exports":"Handlebars"
         },
         "parse": {
-            deps: ['jquery', 'underscore'],
-            exports: 'Parse'
+            deps: ["jquery", "underscore"],
+            exports: "Parse"
         },
         "backbone.validateAll":["backbone"]
     }
