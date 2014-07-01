@@ -9,18 +9,27 @@ define(['App', 'backbone', 'marionette', 'parse', 'models/MemberInfo',
             App.mainRegion.show(new LoginView());
         },
         
+        _checkUser : function(){
+            var user = Parse.User.current();
+            
+            if (user === null) {
+                Backbone.history.navigate('#', {trigger: true});
+                return false;
+            }
+            return true;
+        },
+        
+        
         entry : function(){
-            App.mainRegion.show(new VeloLayoutView());  
-        },
-        
-        
-        start:function () {
-            App.mainRegion.show(new SearchView());
-        },
-        
+            if(this._checkUser()){
+                App.mainRegion.show(new VeloLayoutView());
+            }
+        },        
         
         newMember : function(){
-            App.mainRegion.show(new AddNewMemberView());
+            if(this._checkUser()){
+                App.mainRegion.show(new AddNewMemberView());
+            }
         },
         
         editMember : function(id){

@@ -1,6 +1,6 @@
 define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
-         'handlebars', 'backgrid', 'text!templates/velolayout.html'],
-    function( App, Marionette, AddNewMemberView, SearchView,
+         'views/HeaderView', 'handlebars', 'backgrid', 'text!templates/velolayout.html'],
+    function( App, Marionette, AddNewMemberView, SearchView, HeaderView,
             Handlebars, Backgrid, template) {
 
         var VeloLayoutView = Marionette.LayoutView.extend( {
@@ -8,12 +8,12 @@ define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
             
             regions: {
                 'search' : '#velo-search',
-                'edit' : '#velo-edit'
+                'edit' : '#velo-edit',
+                'header': '#header'
             },
             
             onRender : function(){
-                //this.$('#velo-main-tab').tab('show');
-                
+                this.header.show(new HeaderView());
                 this.search.show(new SearchView());
                 this.edit.show(new AddNewMemberView());
             }

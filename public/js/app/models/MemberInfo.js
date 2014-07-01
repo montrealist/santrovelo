@@ -14,7 +14,7 @@ define (['parse', 'underscore', 'moment'], function(Parse, _, moment){
             'fee' : 0,
             'signoff': false
         },
-                
+        
         
         /*
          * Getter for fullname

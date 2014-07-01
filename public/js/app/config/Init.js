@@ -16,7 +16,8 @@ require.config({
         "parse": "../libs/parse-1.2.16.min",
         "moment" :"../libs/moment/moment",
         "backgrid" : "../libs/backgrid/lib/backgrid",
-        "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min"
+        "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min",
+        "bootbox" : "../libs/bootbox/bootbox"
 
     },
     // Sets the configuration for your third party scripts that are not AMD compatible

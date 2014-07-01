@@ -29,8 +29,17 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
          * Apply x-editable attribute
          */
         onRender : function(){
-            this.$('a.editable').editable({
-                success: this.updateEntry,
+            //not exactly a DRY solution; but works today
+            this.$('a#fullname').editable({
+                success: this.updateName,
+                mode : 'inline'
+            });
+            this.$('a#email').editable({
+                success: this.updateEmail,
+                mode : 'inline'
+            });
+            this.$('a#phone').editable({
+                success: this.updatePhone,
                 mode : 'inline'
             });
         },
@@ -38,20 +47,21 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
         /*
          * Sucess from 'x-editable' - provides us with the new value.
          */
-        updateEntry : function(response, newValue){
-            
-            var mdl = this.model;
-            var updateable = this.$('a.editable');
-            
-            //This handler doesn't trigger which element was updated - so we update the entire model
-            updateable.each(function(index){
-                var attr = $(this).attr('id');
-                mdl.set(attr, newValue);
-            });
-            
+        updateName : function(response, newValue){
+            this.model.setFullName(newValue);            
             this.model.save({error: this.modelSaveError});
         },
         
+        
+        updateEmail : function(response, newValue){
+            this.model.setEmail(newValue);            
+            this.model.save({error: this.modelSaveError});
+        },
+        
+        updatePhone : function(response, newValue){
+            this.model.setPhoneNumber(newValue);
+            this.model.save({error: this.modelSaveError});
+        },
         
         
         /*

@@ -20,7 +20,9 @@ define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/Member
             },
             
             initialize: function(){
+                var oneYearFromToday = moment().add('years', 1);
                 this.model = new MemberInfo();
+                this.model.setRegisteredUntilDate(oneYearFromToday.valueOf());
             },
             
             

@@ -62,7 +62,6 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
              */
             filterResults:function(){
                 var searchResults = App.memberInfo.filter(this._compareMemberInfoToSearchResults);
-
                 this.filteredMemberInfo.reset(searchResults);
 
             },

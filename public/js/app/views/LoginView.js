@@ -30,8 +30,7 @@ define([ 'marionette', 'backbone', 'handlebars', 'parse', 'text!templates/login.
             
             
             loginSuccess : function(user){
-                alert ('user logged in');
-                Backbone.history.navigate("test");
+                Backbone.history.navigate("#start", {trigger: true});
 
             },
             
