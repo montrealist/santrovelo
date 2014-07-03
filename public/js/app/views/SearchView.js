@@ -21,7 +21,8 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
                 _.bindAll(this);
 
                 //created our filtered info (by default map it to the memberInfo item)
-                this.filteredMemberInfo = new MemberInfoCollection(App.memberInfo.toJSON());
+                //this.filteredMemberInfo = new MemberInfoCollection(App.memberInfo.toJSON());
+                this.filteredMemberInfo = App.memberInfo.clone();
 
                 //anytime the App.memberInfo is changed; update our filtered list.
                 this.listenTo(App.memberInfo, 'reset', this.filterResults);
