@@ -1,6 +1,7 @@
 define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
-         'handlebars', 'text!templates/edituser.html', 'moment'],
-       function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, Handlebars, template,moment){
+         'handlebars', 'views/HeaderView', 'text!templates/edituser.html', 'moment'],
+       function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, Handlebars,
+                HeaderView, template,moment){
         
         
         var EditMemberView = Marionette.ItemView.extend({
@@ -11,7 +12,13 @@ define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'm
                 'startDate' : 'form #membershipStartDate',
                 'renewBtn' : 'form #renew',
                 'reregister' : 'form #re-registration',
-                'registerUntilDate': 'form #registeredUntilDate'
+                'registerUntilDate': 'form #registeredUntilDate',
+                'signoff' : 'form #signoff',
+                'name' : 'form #name',
+                'phone' : 'form #phone',
+                'email' : 'form #email',
+                'fee' : 'form #fee',
+                'header' : '#header'
             },
             
             
@@ -33,8 +40,6 @@ define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'm
                 //setup date picker
                 this.ui.startDate.datepicker({ dateFormat: "MM dd yy",
                                                  onSelect: this.memberDateStartSelect});
-                
-                
             },
             
             
@@ -87,7 +92,16 @@ define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'm
                 }
 
                 
-                this.model.save({success:function(){
+                var signoff = this.ui.signoff.prop('checked');
+                var fee = this.ui.fee.val() || 0;
+                
+                this.model.setSignOff(signoff);
+                this.model.setEmail(this.ui.email.val());
+                this.model.setFeePaid(parseFloat(fee));
+                this.model.setFullName(this.ui.name.val());
+                this.model.setPhoneNumber(this.ui.phone.val());
+
+                this.model.saveWithHistory({success:function(){
                     Backbone.history.navigate('#start', {trigger: true});
                     }
                 });

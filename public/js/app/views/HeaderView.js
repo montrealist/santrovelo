@@ -1,10 +1,29 @@
-define( [ 'App', 'marionette', 'handlebars', 'text!templates/headerview.html'],
-       function(App, Marionette, Handlebars, template){
+define( [ 'App', 'backbone', 'parse', 'marionette', 'handlebars', 'text!templates/headerview.html'],
+       function(App, Backbone, Parse, Marionette, Handlebars, template){
         
         
         var HeaderView = Marionette.ItemView.extend({
             template: Handlebars.compile(template),
-
+            className : 'row',
+            
+            ui : {
+                'logoutBtn' : 'a#logout'
+            },
+            
+            events : {
+                'click @ui.logoutBtn' : 'logout'  
+            },
+            
+            
+            initialize : function(){
+                this.model = Parse.User.current();
+            },
+            
+            
+            logout : function(){
+                Parse.User.logOut();
+                Backbone.history.navigate('#', {trigger:true});
+            }
         });
         
         

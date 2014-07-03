@@ -49,18 +49,18 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
          */
         updateName : function(response, newValue){
             this.model.setFullName(newValue);            
-            this.model.save({error: this.modelSaveError});
+            this.model.saveWithHistory({error: this.modelSaveError});
         },
         
         
         updateEmail : function(response, newValue){
             this.model.setEmail(newValue);            
-            this.model.save({error: this.modelSaveError});
+            this.model.saveWithHistory({error: this.modelSaveError});
         },
         
         updatePhone : function(response, newValue){
             this.model.setPhoneNumber(newValue);
-            this.model.save({error: this.modelSaveError});
+            this.model.saveWithHistory({error: this.modelSaveError});
         },
         
         

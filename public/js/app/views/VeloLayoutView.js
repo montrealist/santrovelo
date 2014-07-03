@@ -5,7 +5,7 @@ define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
 
         var VeloLayoutView = Marionette.LayoutView.extend( {
             template: Handlebars.compile(template),
-            
+            className : 'row',
             regions: {
                 'search' : '#velo-search',
                 'edit' : '#velo-edit',
