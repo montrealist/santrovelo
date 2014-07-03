@@ -1,6 +1,8 @@
 /*
+ *
  * A view for adding a new member to the system.
  * Collects basic information and does basic validation
+ * 
  */
 define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
          'handlebars', 'text!templates/newuser.html', 'jquery-validation'],

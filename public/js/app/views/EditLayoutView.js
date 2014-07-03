@@ -1,3 +1,9 @@
+/*
+ *
+ * A view to manage the layout of the edit screen. Provides a view of the current
+ * state of the user; as well as a non-interactive 'history' view
+ *
+ */
 define( [ 'App', 'parse', 'marionette', 'views/EditMemberView', 'views/HeaderView',
          'views/MemberHistoryView', 'handlebars', 'models/MemberInfoHistory',
          'collections/MemberInfoHistoryCollection', 'text!templates/editlayout.html'],

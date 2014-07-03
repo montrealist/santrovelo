@@ -1,8 +1,15 @@
+/*
+ * SearchView
+ *
+ * Defines a view that allows a quick search of existing users (via filtering)
+ * 
+ */
 define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/MemberInfoCollection',
          'handlebars', 'backgrid', 'text!templates/search.html'],
     function( App, Marionette, MemberInfoCollectionView, MemberInfoCollection,
             Handlebars, Backgrid, template) {
 
+            
         var SearchView = Marionette.ItemView.extend( {
 
             template: Handlebars.compile(template),
@@ -21,7 +28,6 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
                 _.bindAll(this);
 
                 //created our filtered info (by default map it to the memberInfo item)
-                //this.filteredMemberInfo = new MemberInfoCollection(App.memberInfo.toJSON());
                 this.filteredMemberInfo = App.memberInfo.clone();
 
                 //anytime the App.memberInfo is changed; update our filtered list.
@@ -34,7 +40,8 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
             /*
              * onRender - el is set; show the memberinfo docllection view
              */
-            onRender: function(){                
+            onRender: function(){
+                //Create a sub view - if it exists; destroy and re-create
                 if (this.searchResultsView) {
                     this.searchResultsView.destroy();
                 }
@@ -50,7 +57,7 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
 
 
             /*
-             * Called to make a search based on text input
+             * Called to make a search based on text input.
              */
             onSearch : function(evt){
                 evt.preventDefault();

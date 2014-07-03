@@ -5,10 +5,15 @@ define(['App', 'backbone', 'marionette', 'parse', 'models/MemberInfo',
               SearchView, LoginView, AddNewMemberView, EditLayoutView, VeloLayoutView) {
     
     controller =  Backbone.Marionette.Controller.extend({        
+        
         login : function(){
             App.mainRegion.show(new LoginView());
         },
         
+        /*
+         * Helper function to see if the user is logged in.
+         * If they are not; re-direct to start
+         */
         _checkUser : function(){
             var user = Parse.User.current();
             

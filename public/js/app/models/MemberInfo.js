@@ -1,4 +1,7 @@
-
+/*
+ * Represents a member in the system.
+ * Provides methods to save a related 'history' object as well
+ */
 define (['parse','models/MemberInfoAbstract', 'models/MemberInfoHistory'],
         function(Parse, MemberInfoAbstract, MemberInfoHistory){
     //Using the parse object to create objects. But should be replaceablewith Backbone.
@@ -14,6 +17,9 @@ define (['parse','models/MemberInfoAbstract', 'models/MemberInfoHistory'],
             
         },
         
+        /*
+         * Save the history only; not this model
+         */
         saveHistory :function(){
             var cloned = this.toJSON();
             //we have to unset some of the options that parse puts on for us

@@ -1,3 +1,10 @@
+/*
+ *
+ * MemberInfoItemView - Asingl row in a database for a member.
+ * Allows inline editing via xeditable
+ *
+ */ 
+
 define( ["App", "backbone","marionette", "models/MemberInfo",
          "text!templates/memberinfoitemview.html", 'xeditable'],
        function(App, Backbone, Marionette, MemberInfo, miivTemplate){
@@ -11,7 +18,6 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
         initialize: function(){
             //guard this for our click handlers
             _.bindAll(this);
-            console.log(this.model.cid);
         },
         
         
@@ -54,11 +60,17 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
         },
         
         
+        /*
+         * Same as above
+         */
         updateEmail : function(response, newValue){
             this.model.setEmail(newValue);            
             this.model.saveWithHistory({error: this.modelSaveError});
         },
         
+        /*
+         * Same as above
+         */
         updatePhone : function(response, newValue){
             this.model.setPhoneNumber(newValue);
             this.model.saveWithHistory({error: this.modelSaveError});

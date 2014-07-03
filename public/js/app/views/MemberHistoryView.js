@@ -1,3 +1,7 @@
+/*
+ * Marionette Needs to define a composite view for the container AND collection of items
+ */
+
 define( [ 'App', 'backbone', 'marionette','handlebars', 'views/MemberHistoryItemView',
          'text!templates/memberhistoryviewtable.html'],
        function(App, Backbone, Marionette, Handlebars, MemberHistoryItemView,

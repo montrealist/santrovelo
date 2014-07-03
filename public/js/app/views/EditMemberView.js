@@ -1,3 +1,8 @@
+/*
+ *
+ * Provides ability to edit an existing member
+ *
+ */
 define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
          'handlebars', 'views/HeaderView', 'text!templates/edituser.html', 'moment'],
        function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, Handlebars,

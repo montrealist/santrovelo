@@ -1,3 +1,8 @@
+/*
+ *
+ * App entry point - setup initializers and setup some handlebars parsers
+ * 
+ */
 define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars',
         'moment', 'collections/MemberInfoCollection'],
     function ($, Backbone, Marionette, _, Handlebars, moment, MemberInfoCollection) {

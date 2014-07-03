@@ -1,0 +1,26 @@
+/*
+* We don't want github knowing our application IDs!
+* rename this file to ParseInit.js,and fill in the correct app ids to
+* use this app!
+*/
+define(["parse"], function(Parse){
+    
+    function init(){
+        Parse.initialize("API ID",
+                     "Javascript ID");
+    }
+    
+    /*
+     * Returns a boolean if the user is authenticated (with parse) or not
+     * */
+    function isAuthenticated(){
+        user = Parse.user.current();
+        return user.authenticated();
+    }
+    
+    
+    return {
+        'init' : init,
+        'isAuthenticated' : isAuthenticated
+    };
+});

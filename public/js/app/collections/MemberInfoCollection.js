@@ -1,3 +1,6 @@
+/*
+ * A container for the MemberInfo model
+ */
 define (["models/MemberInfo", "parse"], function(MemberInfo, Parse){
 
     var MemberInfoCollection = Parse.Collection.extend({

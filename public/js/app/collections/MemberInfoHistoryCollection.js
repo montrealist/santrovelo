@@ -1,3 +1,6 @@
+/*
+ * A container for the history of a member
+ */
 define (["models/MemberInfoHistory", "parse"], function(MemberInfoHistory, Parse){
 
     var MemberInfoHistoryCollection = Parse.Collection.extend({

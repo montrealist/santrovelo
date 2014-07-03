@@ -1,3 +1,7 @@
+/*
+ * A very simple view to manage the person who is logged in via the header
+ */
+
 define( [ 'App', 'backbone', 'parse', 'marionette', 'handlebars', 'text!templates/headerview.html'],
        function(App, Backbone, Parse, Marionette, Handlebars, template){
         
@@ -20,6 +24,9 @@ define( [ 'App', 'backbone', 'parse', 'marionette', 'handlebars', 'text!template
             },
             
             
+            /*
+             * Logs out and redirects to login screen
+             */
             logout : function(){
                 Parse.User.logOut();
                 Backbone.history.navigate('#', {trigger:true});

@@ -1,6 +1,7 @@
 /*
  *
- * Defines the layoutview for the main interface. Allows user to search and add new
+ * Defines the layoutview for the main interface. Allows user to search and add new members
+ * 
  */
 define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
          'views/HeaderView', 'handlebars', 'backgrid', 'text!templates/velolayout.html'],
@@ -36,7 +37,6 @@ define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
              * When the 'add' tab is clicked; create a new view for creating a new member.
              */
             addTabClick : function(){
-                
                 this.addNewView.show(new AddNewMemberView());
             }
         });
