@@ -11,6 +11,7 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
         initialize: function(){
             //guard this for our click handlers
             _.bindAll(this);
+            console.log(this.model.cid);
         },
         
         

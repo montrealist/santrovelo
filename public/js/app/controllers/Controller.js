@@ -32,7 +32,7 @@ define(['App', 'backbone', 'marionette', 'parse', 'models/MemberInfo',
             App.memberPromise.done(function(){
                 var member = App.memberInfo.get(id);
                 //App.mainRegion.show(new EditMemberView({model:member}));
-                App.mainRegion.show(new EditLayoutView({model:member}));
+                App.mainRegion.show(new EditLayoutView({member:member}));
             });
         }
     });

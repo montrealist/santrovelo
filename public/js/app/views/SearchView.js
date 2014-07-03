@@ -1,6 +1,6 @@
 define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/MemberInfoCollection',
          'handlebars', 'backgrid', 'text!templates/search.html'],
-    function( App, Marionette, MemberInfoCollectionView,MemberInfoCollection,
+    function( App, Marionette, MemberInfoCollectionView, MemberInfoCollection,
             Handlebars, Backgrid, template) {
 
         var SearchView = Marionette.ItemView.extend( {
@@ -25,7 +25,8 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
 
                 //anytime the App.memberInfo is changed; update our filtered list.
                 this.listenTo(App.memberInfo, 'reset', this.filterResults);
-                
+                this.listenTo(App.memberInfo, 'add', this.filterResults);
+                this.listenTo(App.memberInfo, 'change', this.filterResults);
             },
 
 
@@ -43,7 +44,7 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
                     });
 
                 this.searchResultsView.render();
-
+                
             },
 
 

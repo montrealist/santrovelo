@@ -1,7 +1,7 @@
-define( [ 'App', 'marionette', 'views/EditMemberView', 'views/HeaderView',
+define( [ 'App', 'parse', 'marionette', 'views/EditMemberView', 'views/HeaderView',
          'views/MemberHistoryView', 'handlebars', 'models/MemberInfoHistory',
          'collections/MemberInfoHistoryCollection', 'text!templates/editlayout.html'],
-    function( App, Marionette, EditMemberView, HeaderView, MemberHistoryView,
+    function( App, Parse, Marionette, EditMemberView, HeaderView, MemberHistoryView,
             Handlebars, MemberInfoHistory, MemberInfoHistoryCollection, template) {
 
         var EditLayoutView = Marionette.LayoutView.extend( {
@@ -21,15 +21,16 @@ define( [ 'App', 'marionette', 'views/EditMemberView', 'views/HeaderView',
             
             onRender : function(){
                 this.header.show(new HeaderView());
-                this.edit.show(new EditMemberView({model:this.model}));
+                
+                this.edit.show(new EditMemberView({model:this.options.member}));
                 
                 //experiment
-                this.memberHistory = new MemberInfoHistoryCollection();
+                this.memberHistory = MemberInfoHistoryCollection.fetchByOwnerObjectId(this.options.member.id);
+                
                 this.editHistory.show(new MemberHistoryView({
                     collection: this.memberHistory
-                    }));
+                }));
                 
-                this.memberHistory.fetch();
             },
             
             

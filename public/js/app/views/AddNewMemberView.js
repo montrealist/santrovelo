@@ -1,6 +1,10 @@
-define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
+/*
+ * A view for adding a new member to the system.
+ * Collects basic information and does basic validation
+ */
+define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
          'handlebars', 'text!templates/newuser.html', 'jquery-validation'],
-       function(App, Marionette, MemberInfoCollection, MemberInfo, Handlebars, template){
+       function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, Handlebars, template){
         
         
         var AddNewMemberView = Marionette.ItemView.extend({
@@ -20,12 +24,18 @@ define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/Member
             },
             
             initialize: function(){
-                var oneYearFromToday = moment().add('years', 1);
                 this.model = new MemberInfo();
+                
+                //Preset the reigstered until date to be one year from now
+                var oneYearFromToday = moment().add('years', 1);
                 this.model.setRegisteredUntilDate(oneYearFromToday.valueOf());
             },
             
             
+            /*
+             * The form is being submitted
+             * Set the model details and save the information
+             */
             onSubmit : function(evt){
                 evt.preventDefault();
             
@@ -38,8 +48,19 @@ define( [ 'App', 'marionette','collections/MemberInfoCollection', 'models/Member
                 this.model.setFullName(this.ui.name.val());
                 this.model.setPhoneNumber(this.ui.phone.val());
                 
-                App.memberInfo.create(this.model, {wait: true});                
+                //Save the model with history
+                var promise = this.model.save();
+                
+                promise.done(function(mdl){
+                    //add it to our history and save its history (why not)
+                    App.memberInfo.add(mdl);
+                    mdl.saveHistory();
+                });
+            
+                $('a[href=#velo-search]').tab('show');
             }
+            
+            
         });
         
         return AddNewMemberView;
