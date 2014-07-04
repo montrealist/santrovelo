@@ -45,7 +45,7 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
                 if (this.searchResultsView) {
                     this.searchResultsView.destroy();
                 }
-
+                
                 this.searchResultsView = new MemberInfoCollectionView({
                     el: this.$('#search-results'),
                     collection: this.filteredMemberInfo

@@ -23,7 +23,11 @@ define (['parse', 'underscore', 'moment'], function(Parse, _, moment){
          * Getter for fullname
          */
         getFullName : function(){
-            return this.get('fullname');
+            var name = this.get('fullname');
+            if (_.isUndefined(name)) {
+                return '';
+            }
+            return name;
         },
         
         

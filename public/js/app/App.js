@@ -17,13 +17,20 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars',
         App.addInitializer(function (options) {
             //Bootstrap member info
             App.memberInfo = new MemberInfoCollection();
-            App.memberPromise = App.memberInfo.fetch();
+            
+            //App.memberPromise = App.memberInfo.fetch();
+            App.memberPromise = MemberInfoCollection.fetch(App.memberInfo);
+            
             Backbone.history.start();
         });
         
         
         //Helper function - determines if date for registration has expired.
         App.isDateBeforeToday = function(time){
+            if (_.isString(time)) {
+                time = parseInt(time, 10);
+            }
+            
             //checks if a date is before now. Helpful for determining if a membership has expired.
             var now = moment();
             var timeCompare = moment(time);
@@ -37,6 +44,9 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars',
 
         // Register a quick helper for date conversions
         Handlebars.registerHelper('formatDate', function(time) {
+            if (_.isString(time)) {
+                time = parseInt(time, 10);
+            }
             //returns a friendly time format
             return moment(time).format('LL');
         });
@@ -49,6 +59,9 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'handlebars',
         Handlebars.registerHelper('isDateBeforeToday', function(time, options){
             if (_.isUndefined(time)) {
                 return options.inverse();
+            }
+            if (_.isString(time)) {
+                time = parseInt(time, 10);
             }
             if( App.isDateBeforeToday(time)){
                 return options.fn(this);

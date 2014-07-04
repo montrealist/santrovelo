@@ -42,14 +42,14 @@ define( [ 'App', 'parse', 'marionette', 'views/EditMemberView', 'views/HeaderVie
             
             /*
              * Fetches history for display (does it only when history is clicked)
-             */
+             
             showHistory : function(){
                 if (!this.historyFetchPromise) {
                     this.history = new MemberInfoHistory();
                     this.historyFetchPromise = this.history.fetch(
                         {data : { 'ownerObjectId' : this.model.id }});
                 }
-            }
+            }*/
 
         });
         
