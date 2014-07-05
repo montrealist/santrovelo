@@ -147,7 +147,7 @@ define (['parse', 'underscore', 'moment'], function(Parse, _, moment){
          */
         getMembershipStartDate : function(){
             return this.get('membershipStartDate');            
-        },
+        }
         
     });
     

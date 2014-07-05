@@ -20,7 +20,7 @@ define (['parse', 'underscore', 'moment', 'models/MemberInfoAbstract'],
         
         initialize : function(){
             this.set('savedBy', this.getCurrentUser());
-            this.set('historySavedAt', moment().valueOf());
+            this.set('historySavedAt', moment().valueOf().toString());
         }
     });
     
