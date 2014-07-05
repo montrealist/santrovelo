@@ -7,10 +7,17 @@ define (["models/MemberInfo", "parse"], function(MemberInfo, Parse){
         model: MemberInfo,
         
         //Parse hasn't kept up with Backbone - need to make a quick and dirty clone function.
-        clone : function(){
+        //if count is passed; limits the number of items to clone
+        clone : function(count){
+            var sliceSize = count;
+            
+            if (count > this.size()) {
+                sliceSize = this.size();
+            }
+            
             var mic = new MemberInfoCollection();
             
-            for(var i = 0; i < this.size(); i++){
+            for(var i = 0; i < sliceSize; i++){
                 mic.add(this.at(i));
             }
             

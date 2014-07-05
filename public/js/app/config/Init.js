@@ -5,7 +5,7 @@ require.config({
     paths:{
         // Core Libraries
         "jquery":"../libs/jquery/jquery.min",
-        "jqueryui":"../libs/jqueryui",
+        "jqueryui":"../libs/jqueryui/jquery-ui",
         "underscore":"../libs/lodash/dist/lodash.min",
         "backbone":"../libs/backbone/backbone",
         "marionette":"../libs/marionette/lib/backbone.marionette.min",

@@ -12,11 +12,10 @@ module.exports = function(grunt) {
                     wrap: true,
                     name: "../libs/almond",
                     preserveLicenseComments: false,
-                    //optimize: "uglify",
-                    optimize: "none",
+                    optimize: "uglify",                    
                     mainConfigFile: "public/js/app/config/Init.js",
                     include: ["app"],
-                    out: "public/js/app/config/Init.min.js"
+                    out: "public/js/build/main.min.js"
                 }
             },
             mainCSS: {

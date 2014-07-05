@@ -13,8 +13,6 @@ define(['handlebars', 'underscore'],
     //returns a friendly time format
     return moment(time).format('LL');
   }
-
-  console.log('test: ' + Handlebars);
         
   Handlebars.registerHelper( 'formatDate', formateDate );
   

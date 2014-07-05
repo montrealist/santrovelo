@@ -13,6 +13,8 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
         var SearchView = Marionette.ItemView.extend( {
 
             template: Handlebars.compile(template),
+            
+            itemsPerPage: 25,
 
             ui  : {
               'searchword' : 'form #search-term'
@@ -28,12 +30,13 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
                 _.bindAll(this);
 
                 //created our filtered info (by default map it to the memberInfo item)
-                this.filteredMemberInfo = App.memberInfo.clone();
+                this.filteredMemberInfo = App.memberInfo.clone(this.itemsPerPage);
 
                 //anytime the App.memberInfo is changed; update our filtered list.
                 this.listenTo(App.memberInfo, 'reset', this.filterResults);
                 this.listenTo(App.memberInfo, 'add', this.filterResults);
                 this.listenTo(App.memberInfo, 'change', this.filterResults);
+                
             },
 
 
@@ -72,7 +75,7 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
             filterResults:function(){
                 var searchResults = App.memberInfo.filter(this._compareMemberInfoToSearchResults);
                 //Lets slice out the first 50 to reset
-                this.filteredMemberInfo.reset(searchResults.slice(0,25));
+                this.filteredMemberInfo.reset(searchResults.slice(0,this.itemsPerPage));
 
             },
 
