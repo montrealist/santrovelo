@@ -6,8 +6,9 @@
  */ 
 
 define( ["App", "backbone","marionette", "models/MemberInfo",
+         "templates/helpers/isDateBeforeToday",
          "text!templates/memberinfoitemview.html", 'xeditable'],
-       function(App, Backbone, Marionette, MemberInfo, miivTemplate){
+       function(App, Backbone, Marionette, MemberInfo,isDateBeforeToday, miivTemplate){
     
     var MemberInfoItemView = Marionette.ItemView.extend({
         template: Handlebars.compile(miivTemplate),
@@ -25,7 +26,7 @@ define( ["App", "backbone","marionette", "models/MemberInfo",
          * Dynamically set the classname on this table row - used to apply bootstrap styling
          */
         className : function(){
-            if ( App.isDateBeforeToday(this.model.getRegisteredUntilDate()) ) {
+            if ( isDateBeforeToday(this.model.getRegisteredUntilDate()) ) {
                 return 'danger';
             }
             return 'success';

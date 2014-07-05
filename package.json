@@ -17,10 +17,7 @@
   "bugs": {
     "url": ""
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": ""
-    }
-  ],
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }

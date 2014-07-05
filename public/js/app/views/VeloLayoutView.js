@@ -4,9 +4,9 @@
  * 
  */
 define( [ 'App', 'marionette', 'views/AddNewMemberView', 'views/SearchView',
-         'views/HeaderView', 'handlebars', 'backgrid', 'text!templates/velolayout.html'],
+         'views/HeaderView', 'handlebars', 'text!templates/velolayout.html'],
     function( App, Marionette, AddNewMemberView, SearchView, HeaderView,
-            Handlebars, Backgrid, template) {
+            Handlebars, template) {
 
         var VeloLayoutView = Marionette.LayoutView.extend( {
             template: Handlebars.compile(template),
