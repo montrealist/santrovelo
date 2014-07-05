@@ -4,15 +4,15 @@ require.config({
     // probably a good idea to keep version numbers in the file names for updates checking
     paths:{
         // Core Libraries
-        "jquery":"../libs/jquery/jquery.min",
+        "jquery":"../libs/jquery/dist/jquery.min",
         "jqueryui":"../libs/jqueryui/jquery-ui",
         "underscore":"../libs/lodash/dist/lodash.min",
         "backbone":"../libs/backbone/backbone",
         "marionette":"../libs/marionette/lib/backbone.marionette.min",
         "handlebars":"../libs/handlebars/handlebars",
         "bootstrap": "../libs/bootstrap/dist/js/bootstrap.min",
-        "text":"../libs/plugins/text",
-        "parse": "../libs/parse-1.2.16.min",
+        "text":"../libs/requirejs-text/text",
+        "parse": "../libs/parse-js-sdk/lib/parse.min",
         "moment" : "../libs/moment/moment",
         "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min"
     },

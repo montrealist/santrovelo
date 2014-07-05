@@ -10,7 +10,7 @@ module.exports = function(grunt) {
                         "app": "config/Init"
                     },
                     wrap: true,
-                    name: "../libs/almond",
+                    name: "../libs/almond/almond",
                     preserveLicenseComments: false,
                     optimize: "uglify",                    
                     mainConfigFile: "public/js/app/config/Init.js",
