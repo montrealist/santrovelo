@@ -74,8 +74,9 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
              */
             filterResults:function(){
                 var searchResults = App.memberInfo.filter(this._compareMemberInfoToSearchResults);
-                //Lets slice out the first 50 to reset
+                //Lets slice out the first few
                 this.filteredMemberInfo.reset(searchResults.slice(0,this.itemsPerPage));
+
 
             },
 

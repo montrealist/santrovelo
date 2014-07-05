@@ -13,7 +13,6 @@ define(['handlebars', 'underscore'],
     //returns a friendly time format
     return moment(time).format('LL');
   }
-        
   Handlebars.registerHelper( 'formatDate', formateDate );
   
   return formateDate;
