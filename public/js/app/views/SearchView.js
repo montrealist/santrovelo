@@ -5,9 +5,9 @@
  * 
  */
 define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/MemberInfoCollection',
-         'handlebars', 'backgrid', 'text!templates/search.html'],
+         'handlebars', 'text!templates/search.html'],
     function( App, Marionette, MemberInfoCollectionView, MemberInfoCollection,
-            Handlebars, Backgrid, template) {
+            Handlebars, template) {
 
             
         var SearchView = Marionette.ItemView.extend( {
@@ -71,7 +71,8 @@ define( [ 'App', 'marionette', 'views/MemberInfoCollectionView','collections/Mem
              */
             filterResults:function(){
                 var searchResults = App.memberInfo.filter(this._compareMemberInfoToSearchResults);
-                this.filteredMemberInfo.reset(searchResults);
+                //Lets slice out the first 50 to reset
+                this.filteredMemberInfo.reset(searchResults.slice(0,25));
 
             },
 

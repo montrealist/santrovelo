@@ -5,8 +5,8 @@
  * 
  */
 define( [ 'App', 'backbone', 'marionette','collections/MemberInfoCollection', 'models/MemberInfo',
-         'handlebars', 'text!templates/newuser.html', 'jquery-validation'],
-       function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, Handlebars, template){
+         'text!templates/newuser.html', 'templates/helpers/formatDate', 'templates/helpers/isDateBeforeToday'],
+       function(App, Backbone, Marionette, MemberInfoCollection, MemberInfo, template){
         
         
         var AddNewMemberView = Marionette.ItemView.extend({

@@ -7,7 +7,7 @@ define( ["marionette", "views/MemberInfoItemView", "handlebars",
        function(Marionette, MemberInfoItemView, Handelbars, loadingTemplate){
     
     Loading = Backbone.Marionette.ItemView.extend({
-        template: Handelbars.compile(loadingTemplate)
+        template: Handlebars.compile(loadingTemplate)
     });
     
     var MemberInfoCollectionView = Marionette.CollectionView.extend({

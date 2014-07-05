@@ -9,51 +9,48 @@ require.config({
         "underscore":"../libs/lodash/dist/lodash.min",
         "backbone":"../libs/backbone/backbone",
         "marionette":"../libs/marionette/lib/backbone.marionette.min",
-        "handlebars":"../libs/handlebars/handlebars.min",
+        "handlebars":"../libs/handlebars/handlebars",
         "bootstrap": "../libs/bootstrap/dist/js/bootstrap.min",
         "text":"../libs/plugins/text",
-        "jquery-validation" : "../libs/jquery.validation/dist/jquery.validate",
         "parse": "../libs/parse-1.2.16.min",
-        "moment" :"../libs/moment/moment",
-        "backgrid" : "../libs/backgrid/lib/backgrid",
-        "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min",
-        "bootbox" : "../libs/bootbox/bootbox"
-
+        "moment" : "../libs/moment/moment",
+        "xeditable" : "../libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min"
     },
+
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim:{
         "bootstrap":["jquery"],
         "jqueryui":["jquery"],
-        "jquery-validation":{
-            "deps": ["jquery"]
-        },
-        "backgrid" :{
-            deps: ["jquery", "backbone", "underscore"],
-            exports: "Backgrid"
-        },
+        "bootbox":["jquery"],
         "backbone":{
-            "deps":["underscore"],
+            "deps": ["jquery","underscore", "handlebars"],
             "exports":"Backbone"
         },
         "marionette":{
-            "deps":["underscore", "backbone", "jquery"],
+            "deps":["underscore", "backbone", "jquery", "handlebars"],
             "exports":"Marionette"
         },
         "handlebars":{
-            "exports":"Handlebars"
+            "exports":"Handlebars",
+            init: function() {
+                this.Handlebars = Handlebars;
+                return this.Handlebars;
+            }
         },
         "parse": {
-            deps: ["jquery", "underscore"],
-            exports: "Parse"
+            "deps": ["jquery", "underscore"],
+            "exports" : "Parse"
         },
-        "backbone.validateAll":["backbone"]
+        "xeditable":["jquery", "bootstrap"]
     }
 });
+
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
 require(["App", "routers/AppRouter", "controllers/Controller", "config/ParseInit",
          "jquery", "jqueryui","bootstrap"],
     function (App, AppRouter, Controller, ParseInit) {
+        
         ParseInit.init();
         
         App.appRouter = new AppRouter({
